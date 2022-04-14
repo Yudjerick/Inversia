@@ -69,5 +69,5 @@
 
 * [@eiparfenov](https://github.com/eiparfenov) - gamedev, Unity разработчик
 * [@Yana](https://github.com/Delivery-Klad) - gamedev, Unity разработчик, графический дизайнер
-* [@Yudjerick](https://vk.com/Yudjerick) - gamedev, Unity разработчик
+* [@Yudjerick](https://github.com/Yudjerick) - gamedev, Unity разработчик
 * [@mentoster](https://github.com/mentoster) - Ответственный
