@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Interactable : ModeDependentBehaviour
 {
-    [SerializeField] private bool blockedX;
-    [SerializeField] private bool blockedY;
-    [SerializeField] private bool blockedZ;
+
+    public bool lockHandRotation;
 
     [SerializeField] private bool usesGravity;
 

@@ -6,6 +6,7 @@ public class GrabHand : ModeDependentBehaviour
 {
     private Rigidbody rb;
     public Rigidbody selectedObj;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,6 +68,20 @@ public class GrabHand : ModeDependentBehaviour
     public void OnTriggerEnter(Collider other)
     {
         selectedObj = other.gameObject.GetComponentInParent<Rigidbody>();
+        Interactable interactable = other.gameObject.GetComponentInParent<Interactable>();
+        if (interactable)
+        {
+            if (interactable.lockHandRotation)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                Debug.Log("rotation locked");
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                Debug.Log("rotation unlocked");
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
