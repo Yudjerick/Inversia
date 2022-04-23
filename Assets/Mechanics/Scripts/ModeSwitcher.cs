@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class ModeSwitcher : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    //переключатель режима, должен быть прикреплен на пустой объект
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))

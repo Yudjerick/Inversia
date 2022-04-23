@@ -5,10 +5,11 @@ using UnityEngine;
 public class ModeDependentBehaviour : MonoBehaviour
 {
     public static bool inSandbox;
-    [SerializeField] private bool inSandboxFrameAgo;
-    private void Update()
+    protected bool inSandboxFrameAgo;
+
+    protected void CallModeMethods()
     {
-        if(inSandbox && !inSandboxFrameAgo)
+        if (inSandbox && !inSandboxFrameAgo)
         {
             OnSandboxEnable();
         }
@@ -19,12 +20,6 @@ public class ModeDependentBehaviour : MonoBehaviour
         inSandboxFrameAgo = inSandbox;
     }
 
-    public virtual void OnSandboxEnable()
-    {
-
-    }
-    public virtual void OnSandboxDisable()
-    {
-
-    }
+    public virtual void OnSandboxEnable() { }
+    public virtual void OnSandboxDisable() { }
 }

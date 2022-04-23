@@ -21,24 +21,20 @@ public class Interactable : ModeDependentBehaviour
     }
     void Update()
     {
-        if (inSandbox)
-        {
-            transform.position = defaultPos;
-            transform.rotation = defaultRot;
-            rb.velocity = Vector3.zero;
-            rb.useGravity = false;
-            //rb.constraints = RigidbodyConstraints.FreezeAll;
-        }
-        else
-        {
-            rb.useGravity = usesGravity;
-        }
+        CallModeMethods();
     }
 
     public override void OnSandboxEnable()
     {
-        base.OnSandboxEnable();
+        Debug.Log("sandbox mode enabled");
         transform.position = defaultPos;
         transform.rotation = defaultRot;
+        rb.isKinematic = true;
+    }
+
+    public override void OnSandboxDisable()
+    {
+        rb.isKinematic = false;
+        Debug.Log("sandbox mode disabled");
     }
 }
