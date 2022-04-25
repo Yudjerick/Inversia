@@ -50,6 +50,7 @@ public class GrabHand : ModeDependentBehaviour
         {
             return;
         }
+        body.isKinematic = false;
         FixedJoint fj = gameObject.AddComponent<FixedJoint>();
         fj.connectedBody = body;
     }
@@ -57,16 +58,24 @@ public class GrabHand : ModeDependentBehaviour
     public void UnGrab()
     {
         FixedJoint fj = GetComponent<FixedJoint>();
-        if (fj != null)
+        if (!fj)
+            return;
+
+        Interactable interactable = fj.connectedBody.gameObject.GetComponentInParent<Interactable>();
+        if(interactable && interactable.makeKinematic)
         {
-            Destroy(fj);
+            fj.connectedBody.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
         }
+        Destroy(fj);
+
     }
 
 
 
     public void OnTriggerEnter(Collider other)
     {
+        if (GetComponent<FixedJoint>())
+            return;
         selectedObj = other.gameObject.GetComponentInParent<Rigidbody>();
         Interactable interactable = other.gameObject.GetComponentInParent<Interactable>();
         if (interactable)

@@ -6,8 +6,8 @@ public class Interactable : ModeDependentBehaviour
 {
 
     public bool lockHandRotation;
-
-    [SerializeField] private bool usesGravity;
+    public bool makeKinematic;
+    [SerializeField] private GameObject sandboxUI;
 
     private Vector3 defaultPos;
     private Quaternion defaultRot;
@@ -16,7 +16,10 @@ public class Interactable : ModeDependentBehaviour
     {
         defaultPos = transform.position;
         defaultRot = transform.rotation;
+
         rb = GetComponent<Rigidbody>();
+
+        rb.isKinematic = makeKinematic;
     }
     void Update()
     {
@@ -29,11 +32,16 @@ public class Interactable : ModeDependentBehaviour
         transform.position = defaultPos;
         transform.rotation = defaultRot;
         rb.isKinematic = true;
+        if (sandboxUI)
+            sandboxUI.SetActive(true);
     }
 
     public override void OnSandboxDisable()
     {
         rb.isKinematic = false;
+        if (sandboxUI)
+            sandboxUI.SetActive(false);
+
         Debug.Log("sandbox mode disabled");
     }
 }
