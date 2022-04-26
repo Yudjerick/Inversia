@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Interactable : ModeDependentBehaviour
 {
-
     public bool lockHandRotation;
     public bool makeKinematic;
     [SerializeField] private GameObject sandboxUI;
