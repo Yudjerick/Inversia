@@ -11,14 +11,15 @@ public class Interactable : ModeDependentBehaviour
     private Vector3 defaultPos;
     private Quaternion defaultRot;
     private Rigidbody rb;
+    [SerializeField] Vector3 pivot;
     void Start()
     {
         defaultPos = transform.position;
         defaultRot = transform.rotation;
 
         rb = GetComponent<Rigidbody>();
-
         rb.isKinematic = makeKinematic;
+        rb.centerOfMass = pivot;
     }
     void Update()
     {

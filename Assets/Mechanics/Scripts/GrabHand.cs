@@ -53,6 +53,12 @@ public class GrabHand : ModeDependentBehaviour
         body.isKinematic = false;
         FixedJoint fj = gameObject.AddComponent<FixedJoint>();
         fj.connectedBody = body;
+
+        AxisConstraints axisConstraints = body.gameObject.GetComponentInParent<AxisConstraints>();
+        if (axisConstraints)
+        {
+            axisConstraints.Activate();
+        }
     }
 
     public void UnGrab()
@@ -66,8 +72,14 @@ public class GrabHand : ModeDependentBehaviour
         {
             fj.connectedBody.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
         }
-        Destroy(fj);
+        
+        AxisConstraints axisConstraints = fj.connectedBody.gameObject.GetComponentInParent<AxisConstraints>();
+        if (axisConstraints)
+        {
+            axisConstraints.Deactivate();
+        }
 
+        Destroy(fj);
     }
 
 
@@ -91,10 +103,12 @@ public class GrabHand : ModeDependentBehaviour
                 Debug.Log("rotation unlocked");
             }
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
         selectedObj = null;
+        
     }
 }
