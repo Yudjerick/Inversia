@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//объект, перемещающийся по заданному пути
 public class FollowingPath: ModeDependentBehaviour
 {
     [SerializeField] private float speed;
@@ -12,15 +13,18 @@ public class FollowingPath: ModeDependentBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.mass = float.PositiveInfinity;
     }
 
     private void Update()
     {
+        if (pathPoints.Length < 2)
+            return;
         CallModeMethods();
     }
     void FixedUpdate()
     {
-        if (inSandbox)
+        if (inSandbox || pathPoints.Length < 2)
             return;
         rb.velocity = (pathPoints[nextPoint] - transform.position).normalized * speed;
         if ((transform.position - pathPoints[nextPoint]).magnitude <= 0.1f)

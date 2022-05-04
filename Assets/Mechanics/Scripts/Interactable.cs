@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//класс объектов, которые можно взять "рукой"
 public class Interactable : ModeDependentBehaviour
 {
     public bool lockHandRotation;

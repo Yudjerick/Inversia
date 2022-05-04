@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//класс всех объектов использующих смену режима (game/sandbox)
 public class ModeDependentBehaviour : MonoBehaviour
 {
     public static bool inSandbox;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//скрипт для захвата объектов (руки), нужно связать с VR контроллером с помощбю HingeJoint
 public class GrabHand : ModeDependentBehaviour
 {
     private Rigidbody rb;
@@ -16,18 +17,10 @@ public class GrabHand : ModeDependentBehaviour
     {
         if (!inSandbox)
         {
-            //Replace with vr controller movement
-            float ZMov = 0;
-            if (Input.GetKey(KeyCode.X))
-            {
-                ZMov = -1;
-            }
-            if (Input.GetKey(KeyCode.Z))
-            {
-                ZMov = 1;
-            }
-            rb.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), ZMov);
+            //Test movement
+            PCmovementForTesting();
             //
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 Grab(selectedObj);
@@ -42,6 +35,20 @@ public class GrabHand : ModeDependentBehaviour
             UnGrab();
             //activate sandboxArm gameobject , deactivate this gameobject
         }
+    }
+
+    void PCmovementForTesting()
+    {
+        float ZMov = 0;
+        if (Input.GetKey(KeyCode.X))
+        {
+            ZMov = -1;
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            ZMov = 1;
+        }
+        rb.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), ZMov)*2;
     }
 
     public void Grab(Rigidbody body)
@@ -82,16 +89,15 @@ public class GrabHand : ModeDependentBehaviour
         Destroy(fj);
     }
 
-
-
     public void OnTriggerEnter(Collider other)
     {
         if (GetComponent<FixedJoint>())
             return;
-        selectedObj = other.gameObject.GetComponentInParent<Rigidbody>();
+        
         Interactable interactable = other.gameObject.GetComponentInParent<Interactable>();
         if (interactable)
         {
+            selectedObj = other.gameObject.GetComponentInParent<Rigidbody>();
             if (interactable.lockHandRotation)
             {
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -103,12 +109,10 @@ public class GrabHand : ModeDependentBehaviour
                 Debug.Log("rotation unlocked");
             }
         }
-        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        selectedObj = null;
-        
+        selectedObj = null;   
     }
 }
