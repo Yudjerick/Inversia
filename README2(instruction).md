@@ -1,7 +1,11 @@
 # Инструкция
 ## Описание скриптов
-[AxisConstraints2](https://github.com/Yudjerick/Inversia/blob/master/Assets/Mechanics/Scripts/AxisConstraints2.cs) - скрипт, обеспечивающий возможность перемещения объекта по выбранной оси с заданными ограничениями.
+[AxisConstraints2](https://github.com/Yudjerick/Inversia/blob/master/Assets/Mechanics/Scripts/AxisConstraints2.cs) - скрипт, обеспечивающий возможность перемещения объекта по выбранной оси с заданными ограничениями.  
 Поля в редакторе: 
 + axis - ось, по которой объект сможет двигаться
 + minPos - минимальная позиция объекта по координате выбранной оси
 + maxPos - максимальная позиция объекта по координате выбранной оси
+
+[GrabHand](https://github.com/Yudjerick/Inversia/blob/master/Assets/Mechanics/Scripts/GrabHand.cs) - скрипт, для "руки", которой будут захватываться объекты. Сейчас для тестов с компьютера "рука" управляется клавишами WASDZX для движения и SHIFT(удерживание) для захвата объекта. При совмещении с VR позиция "руки" должна быть привязана к позиции VR контроллера, а вращение должно быть свободным.  
+Поля в редакторе:
++ controllerVR - объект VR контроллера доджен быть помещен в это поле.
