@@ -2,14 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//скрипт для захвата объектов (руки), нужно связать с VR контроллером с помощбю HingeJoint
+//скрипт для захвата объектов (руки), нужно связать с VR контроллером
 public class GrabHand : ModeDependentBehaviour
 {
+    public GameObject controllerVR;
+
     private Rigidbody rb;
-    public Rigidbody selectedObj;
+    private Rigidbody selectedObj;
+    private ConfigurableJoint cj;
     
     void Start()
     {
+        if (controllerVR)
+        {
+            transform.position = controllerVR.transform.position;
+            cj = gameObject.AddComponent<ConfigurableJoint>();
+            cj.autoConfigureConnectedAnchor = false;
+            cj.connectedAnchor = Vector3.zero;
+            cj.anchor = Vector3.zero;
+            cj.connectedBody = controllerVR.GetComponent<Rigidbody>();
+            cj.xMotion = ConfigurableJointMotion.Locked;
+            cj.yMotion = ConfigurableJointMotion.Locked;
+            cj.zMotion = ConfigurableJointMotion.Locked;
+        }
         rb = GetComponent<Rigidbody>();
     }
 
@@ -60,12 +75,6 @@ public class GrabHand : ModeDependentBehaviour
         body.isKinematic = false;
         FixedJoint fj = gameObject.AddComponent<FixedJoint>();
         fj.connectedBody = body;
-
-        AxisConstraints axisConstraints = body.gameObject.GetComponentInParent<AxisConstraints>();
-        if (axisConstraints)
-        {
-            axisConstraints.Activate();
-        }
     }
 
     public void UnGrab()
@@ -78,12 +87,6 @@ public class GrabHand : ModeDependentBehaviour
         if(interactable && interactable.makeKinematic)
         {
             fj.connectedBody.gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
-        }
-        
-        AxisConstraints axisConstraints = fj.connectedBody.gameObject.GetComponentInParent<AxisConstraints>();
-        if (axisConstraints)
-        {
-            axisConstraints.Deactivate();
         }
 
         Destroy(fj);

@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 28478379}
   - component: {fileID: 28478378}
   m_Layer: 0
-  m_Name: ArmTest
+  m_Name: GrabHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28478373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72184515, y: 2.422, z: 0}
+  m_LocalPosition: {x: -2.178, y: 2.422, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08930690a82a46448ac8a4b6fbc3a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedObj: {fileID: 0}
+  controllerVR: {fileID: 0}
 --- !u!1 &46716988
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,13 +738,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855547693}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1301517452}
-  m_RootOrder: 2
+  m_Father: {fileID: 1236307668}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &855547695
 BoxCollider:
@@ -912,9 +912,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4564649458484928684, guid: 7d3dbbd8ab9a84048adc44bffbca38c3, type: 3}
   m_PrefabInstance: {fileID: 721675115}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1301517452 stripped
+--- !u!4 &1236307668 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2160114297447643202, guid: aeb910b2650a9e449955fb3c086cb2d1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2160114297397129775, guid: aeb910b2650a9e449955fb3c086cb2d1, type: 3}
   m_PrefabInstance: {fileID: 294031474}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1305955389
