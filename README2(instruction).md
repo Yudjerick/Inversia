@@ -33,4 +33,7 @@
 [ModeSwitcher](https://github.com/Yudjerick/Inversia/blob/master/Assets/Mechanics/Scripts/ModeSwitcher.cs) - обеспечивает смену режима по клавише M, прикреплен к пустому объекту
 
 ---
-[FollowingPath](https://github.com/Yudjerick/Inversia/blob/master/Assets/Mechanics/Scripts/FollowingPath.cs) - скрипт объекта двигающегося по заданному маршруту из точек, с ним нельзя взаимодействовать при помощи "руки"
+[FollowingPath](https://github.com/Yudjerick/Inversia/blob/master/Assets/Mechanics/Scripts/FollowingPath.cs) - скрипт объекта двигающегося по заданному маршруту из точек, с ним нельзя взаимодействовать при помощи "руки".  
+Поля в редакторе:
++ speed - скорость движения
++ pathPoints - массив точек маршрута
